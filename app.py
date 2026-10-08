@@ -1,8 +1,12 @@
 import time
 from datetime import datetime
 
+import re
+from collections import Counter
+
 import pandas as pd
 import streamlit as st
+from sklearn.metrics import classification_report, confusion_matrix
 from transformers import pipeline
 
 # ------------------------------------------------------------------
@@ -19,6 +23,12 @@ MODELS = {
     "RoBERTa": "cardiffnlp/twitter-roberta-base-sentiment",
     "BERT": "nlptown/bert-base-multilingual-uncased-sentiment",
 }
+
+STOPWORDS = set(
+    "the a an and or but is are was were be been to of in on at for with this that it "
+    "i you he she we they my your our their its as by from not no so very just have has had "
+    "do does did will would can could".split()
+)
 
 EMOJI = {"POSITIVE": "😊", "NEUTRAL": "😐", "NEGATIVE": "😞"}
 
@@ -87,6 +97,14 @@ def predict(model_name, texts, use_neutral=True, neutral_threshold=0.70):
 
 def scores_frame(scores):
     return pd.DataFrame({"Score (%)": {k: v * 100 for k, v in scores.items()}})
+
+
+def top_words(texts, n=15):
+    words = []
+    for t in texts:
+        words += [w for w in re.findall(r"[a-zA-Z']+", str(t).lower())
+                  if w not in STOPWORDS and len(w) > 2]
+    return pd.DataFrame(Counter(words).most_common(n), columns=["Word", "Count"]).set_index("Word")
 
 
 def add_history(model_name, text, res):
@@ -228,11 +246,35 @@ with tab_batch:
             st.dataframe(subset, use_container_width=True)
             st.bar_chart(subset["Predicted"].value_counts())
 
+            st.subheader("Most frequent words")
+            st.bar_chart(top_words(texts))
+
             if true_col != "(none)":
-                mapping = {"1": "POSITIVE", "0": "NEGATIVE", "POS": "POSITIVE", "NEG": "NEGATIVE"}
+                mapping = {"1": "POSITIVE", "0": "NEGATIVE", "POS": "POSITIVE",
+                           "NEG": "NEGATIVE", "NEU": "NEUTRAL"}
                 truth = subset[true_col].astype(str).str.upper().replace(mapping)
-                acc = (truth == subset["Predicted"]).mean() * 100
+                pred = subset["Predicted"]
+
+                acc = (truth == pred).mean() * 100
                 st.metric("Accuracy vs. true labels", f"{acc:.2f}%")
+
+                labels = sorted(set(truth) | set(pred))
+                report = classification_report(
+                    truth, pred, labels=labels, output_dict=True, zero_division=0
+                )
+                st.subheader("Precision / Recall / F1")
+                st.dataframe(
+                    pd.DataFrame(report).T.round(3).drop(index=["accuracy"], errors="ignore"),
+                    use_container_width=True,
+                )
+
+                st.subheader("Confusion matrix")
+                cm = pd.DataFrame(
+                    confusion_matrix(truth, pred, labels=labels),
+                    index=[f"True {l}" for l in labels],
+                    columns=[f"Pred {l}" for l in labels],
+                )
+                st.dataframe(cm, use_container_width=True)
 
             st.download_button(
                 "⬇️ Download results (CSV)",
