@@ -115,16 +115,7 @@ Examples include:
 
 ---
 
-# 🎥 Demo
 
-A demonstration video is available in:
-
-```text
-Demo/
-└── Demo.mp4
-```
-
----
 
 # 📊 Dataset
 
