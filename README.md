@@ -75,7 +75,7 @@ sentiment-classification-system/
 
 ```bash
 # Clone repository
-git clone https://github.com/VedaShivayogi/Healthcare-Face-Recognition-Login-System.git
+git clone https://github.com/VedaShivayogi/Sentiment-Classification-System
 cd Sentiment-Classification-System-main
 
 # Create virtual environment
