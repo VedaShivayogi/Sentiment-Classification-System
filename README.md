@@ -1,105 +1,113 @@
-# Sentiment Classification System
+# 🎙️💬 VEDA — Voice, Emotion & Data Analytics
 
-An NLP-based sentiment analysis application built with Python, Streamlit, and Hugging Face Transformers. The system classifies text into **Positive** or **Negative** sentiment using three state-of-the-art pretrained transformer models: **BERT**, **DistilBERT**, and **RoBERTa**.
+> *"Understand Every Word. Discover Every Emotion."*
 
-![Python](https://img.shields.io/badge/Python-3.10-blue?logo=python)
-![Streamlit](https://img.shields.io/badge/Streamlit-Web%20Application-red?logo=streamlit)
-![Transformers](https://img.shields.io/badge/HuggingFace-Transformers-yellow)
-![PyTorch](https://img.shields.io/badge/PyTorch-Deep%20Learning-red?logo=pytorch)
-![NLP](https://img.shields.io/badge/NLP-Sentiment%20Analysis-green)
+VEDA is an enterprise-grade, portfolio-ready **Voice & Text AI Sentiment Intelligence Platform** built with Python, Streamlit, PyTorch, Hugging Face Transformers, SpeechRecognition, ReportLab, and SQLite.
 
----
-
-# 📖 Overview
-
-This project was developed to compare the performance of multiple transformer-based language models for sentiment classification.
-
-The application provides an interactive web interface where users can enter any English sentence, choose one of three pretrained Hugging Face models, and instantly receive the predicted sentiment along with the confidence score.
-
-The project demonstrates how modern NLP models can accurately analyze textual opinions and emotions through transfer learning without training models from scratch.
+![VEDA Platform](https://img.shields.io/badge/VEDA-Voice%20%26%20Emotion%20AI-4F46E5?style=for-the-badge&logo=Streamlit)
+![NLP Models](https://img.shields.io/badge/NLP-Transformers-yellow?style=for-the-badge&logo=huggingface)
+![Python](https://img.shields.io/badge/Python-3.9+-3776AB?style=for-the-badge&logo=python)
 
 ---
 
-# ✨ Features
+## 🌟 Key Features
 
-- Interactive Streamlit web application.
-- Supports three pretrained transformer models.
-- Predicts Positive or Negative sentiment.
-- Displays prediction confidence score.
-- Easy model switching for comparison.
-- Fast real-time inference.
-- Clean and user-friendly interface.
-
----
-
-# 🤖 Models Used
-
-The project compares the following Hugging Face pretrained models:
-
-| Model | Purpose |
-|--------|----------|
-| BERT | Bidirectional Encoder Representations from Transformers |
-| DistilBERT | Lightweight and faster version of BERT |
-| RoBERTa | Robustly Optimized BERT Pretraining Approach |
+- **🎙️ Voice Intelligence & Speech-to-Text:** Record voice directly from the browser or upload `.wav`, `.mp3`, `.m4a`, or `.ogg` audio files for automated transcription and voice sentiment analysis.
+- **😊 Granular Emotion Detection:** Classifies overall sentiment (`POSITIVE`, `NEUTRAL`, `NEGATIVE`) while detecting granular emotional tones (`Joy`, `Sadness`, `Anger`, `Fear`, `Surprise`, `Neutral`).
+- **🎨 Modern Light SaaS UI:** Built with a crisp, minimal white theme featuring rounded cards, pill badges, soft shadows, and indigo accents.
+- **💡 VEDA AI Insights & Key Tokens:** Generates deterministic natural language summaries and extracts key positive/negative term indicators.
+- **📄 Professional PDF Reports:** Export formal single-page PDF intelligence reports (with VEDA logo, date, input type, transcript, sentiment scores, emotion, and AI insight) or CSV logs.
+- **🔐 Multi-User Authentication:** Secure SQLite database (`sentiment_app.db`) with SHA-256 password hashing, user registration, forgot password reset, and isolated history logs.
+- **🤖 Multi-Model Comparison & Consensus:** Evaluate **DistilBERT**, **RoBERTa**, and **BERT** side-by-side with automated consensus reporting (`3/3 models agree`).
+- **📂 Batch File Processing:** Process CSV or Excel datasets with automated classification, confidence distribution, accuracy metrics, confusion matrices, and report downloads.
+- **📊 Interactive Analytics:** Filter historical predictions by date, model, or sentiment, with voice vs. text volume timelines.
 
 ---
 
-# 📂 Project Structure
+## 🤖 Models & Sentiment Mapping
 
-```text
-NLP-Project
+| Model Engine | Hugging Face Checkpoint | Native Output | VEDA Mapping |
+| :--- | :--- | :--- | :--- |
+| **DistilBERT** | `distilbert-base-uncased-finetuned-sst-2-english` | `POSITIVE`, `NEGATIVE` | Confidence < threshold → `NEUTRAL` |
+| **RoBERTa** | `cardiffnlp/twitter-roberta-base-sentiment` | `LABEL_0`, `LABEL_1`, `LABEL_2` | `LABEL_0` → `NEGATIVE`<br/>`LABEL_1` → `NEUTRAL`<br/>`LABEL_2` → `POSITIVE` |
+| **BERT** | `nlptown/bert-base-multilingual-uncased-sentiment` | `1 star` to `5 stars` | `1-2 stars` → `NEGATIVE`<br/>`3 stars` → `NEUTRAL`<br/>`4-5 stars` → `POSITIVE` |
+
+---
+
+## 📂 Project Architecture
+
+```
+sentiment-classification-system/
 │
-├── Dataset
-│   └── NLP_Project_Dataset.xlsx
+├── app.py              # Main application router & Light UI sidebar navigation
+├── auth.py             # User authentication, registration & password reset
+├── database.py         # SQLite CRUD utilities, user hashing, & predictions migration
+├── models.py           # Hugging Face cached pipeline loading & score unification
+├── voice.py            # Speech-to-Text transcription engine & audio processing
+├── emotion.py          # Emotion classification engine (Joy, Sadness, Anger, etc.)
+├── report.py           # ReportLab PDF report generator
+├── utils.py            # Word extraction, VEDA AI insights & report helpers
+├── requirements.txt    # Project dependencies
+├── README.md           # Documentation & setup guide
+├── .gitignore          # Git exclusion rules
 │
-├── Demo
-│   └── Demo.mp4
+├── pages/
+│   ├── __init__.py
+│   ├── dashboard.py    # VEDA Light UI dashboard & action cards
+│   ├── analyze.py      # Text Sentiment & Emotion Analysis interface
+│   ├── voice_analysis.py # Voice Intelligence & Speech Sentiment workspace
+│   ├── compare.py      # 3-Model side-by-side comparison & consensus engine
+│   ├── batch.py        # CSV/Excel batch processor & accuracy evaluation
+│   ├── analytics.py    # Historical analytics & voice vs. text metrics
+│   ├── history.py      # User-isolated prediction history & CSV export
+│   ├── profile.py      # User account management
+│   └── settings.py     # Default input, model & speech parameters
 │
-├── Documentation
-│   └── NLP_Project_Report.pdf
-│
-├── Images
-│   ├── Negative_Example1_BERT.png
-│   ├── ...
-│   └── Positive_Example2_RoBERTa.png
-│
-├── Models
-│   └── Model_Evaluation.ipynb
-│
-├── app.py
-├── requirements.txt
-└── README.md
+└── assets/
+    └── style.css       # VEDA Light Theme CSS styling
 ```
 
 ---
 
-# 🚀 Installation
+## 🚀 Installation & Setup
 
-Clone the repository:
+### 1. Clone & Virtual Environment
 
 ```bash
-git clone [https://github.com/USERNAME/NLP-Project.git](https://github.com/Shooqaladwani/Sentiment-Classification-System.git)
+# Clone repository
+git clone https://github.com/VedaShivayogi/Healthcare-Face-Recognition-Login-System.git
+cd Sentiment-Classification-System-main
 
-cd NLP-Project
+# Create virtual environment
+python -m venv venv
+
+# Activate virtual environment
+# Windows:
+venv\Scripts\activate
+# macOS/Linux:
+source venv/bin/activate
 ```
 
-Install the required packages:
+### 2. Install Requirements
 
 ```bash
 pip install -r requirements.txt
 ```
 
----
-
-# ▶️ Run the Application
-
-Start the Streamlit application:
+### 3. Launch VEDA
 
 ```bash
 streamlit run app.py
 ```
 
-The application will automatically open in your web browser.
+---
+
+## 🔑 Demo Account
+
+The application seeds a demo user on first run:
+
+- **Email:** `demo@veda.ai`
+- **Password:** `password123`
 
 ---
 
@@ -160,3 +168,10 @@ Documentation/
 - Visualize confidence scores using charts.
 - Deploy the application online using Streamlit Community Cloud.
 
+---
+
+## 🌟 Future Expansion
+
+- **Multilingual Voice Support:** Native speech-to-text models for Regional Indian Languages (Kannada, Hindi, Tamil, Telugu).
+- **Whisper / Faster-Whisper Integration:** Offline local high-accuracy speech transcription.
+- **Aspect-Based Sentiment Analysis (ABSA):** Entity & feature sentiment extraction.

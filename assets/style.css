@@ -1,0 +1,282 @@
+/* assets/style.css — VEDA Light AI SaaS Theme */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+
+html, body, [class*="css"] {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    color: #0f172a;
+}
+
+/* Base App Light Background */
+.stApp {
+    background-color: #f8fafc;
+    color: #0f172a;
+}
+
+/* Sidebar styling - Light SaaS style */
+section[data-testid="stSidebar"] {
+    background-color: #ffffff;
+    border-right: 1px solid #e2e8f0;
+}
+
+section[data-testid="stSidebar"] .stButton > button {
+    width: 100%;
+    border-radius: 10px;
+    background: transparent;
+    border: 1px solid transparent;
+    color: #475569;
+    text-align: left;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    margin-bottom: 4px;
+    padding: 8px 12px;
+}
+
+section[data-testid="stSidebar"] .stButton > button:hover {
+    background-color: #f1f5f9;
+    color: #0f172a;
+    border-color: #cbd5e1;
+}
+
+section[data-testid="stSidebar"] .stButton > button[kind="primary"] {
+    background-color: #eef2ff !important;
+    color: #4f46e5 !important;
+    border-color: #c7d2fe !important;
+    font-weight: 700 !important;
+}
+
+/* VEDA Soft Light Cards */
+.veda-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.04), 0 2px 4px -1px rgba(0, 0, 0, 0.02);
+}
+
+.veda-hero-card {
+    background: linear-gradient(135deg, #ffffff 0%, #f0fdf4 50%, #eff6ff 100%);
+    border: 1px solid #c7d2fe;
+    border-radius: 20px;
+    padding: 32px;
+    margin-bottom: 24px;
+    box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.08);
+}
+
+.veda-action-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 24px;
+    text-align: center;
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.veda-action-card:hover {
+    border-color: #6366f1;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 20px -5px rgba(99, 102, 241, 0.12);
+}
+
+/* KPI Metric Cards - Light Mode */
+.kpi-card-light {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.03);
+}
+
+.kpi-title-light {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #64748b;
+    margin-bottom: 6px;
+}
+
+.kpi-value-light {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: #0f172a;
+}
+
+.kpi-sub-light {
+    font-size: 0.78rem;
+    color: #94a3b8;
+    margin-top: 4px;
+}
+
+/* Sentiment Badges */
+.badge-pos {
+    background-color: #ecfdf5;
+    color: #059669;
+    border: 1px solid #a7f3d0;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    display: inline-block;
+}
+
+.badge-neu {
+    background-color: #f1f5f9;
+    color: #475569;
+    border: 1px solid #cbd5e1;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    display: inline-block;
+}
+
+.badge-neg {
+    background-color: #fef2f2;
+    color: #dc2626;
+    border: 1px solid #fecaca;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    display: inline-block;
+}
+
+/* Emotion Badges */
+.badge-emotion {
+    background-color: #eef2ff;
+    color: #4f46e5;
+    border: 1px solid #c7d2fe;
+    padding: 5px 14px;
+    border-radius: 20px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    display: inline-block;
+}
+
+/* Keyword Chips */
+.keyword-chip {
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    color: #334155;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 0.82rem;
+    font-weight: 500;
+    display: inline-block;
+    margin-right: 6px;
+    margin-bottom: 6px;
+}
+
+.keyword-chip-pos {
+    background: #f0fdf4;
+    border: 1px solid #bbf7d0;
+    color: #166534;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-right: 6px;
+    margin-bottom: 6px;
+}
+
+.keyword-chip-neg {
+    background: #fef2f2;
+    border: 1px solid #fecaca;
+    color: #991b1b;
+    padding: 4px 12px;
+    border-radius: 16px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    display: inline-block;
+    margin-right: 6px;
+    margin-bottom: 6px;
+}
+
+/* Form Inputs */
+.stTextArea textarea, .stTextInput input, .stSelectbox select {
+    background-color: #ffffff !important;
+    border: 1px solid #cbd5e1 !important;
+    color: #0f172a !important;
+    border-radius: 10px !important;
+}
+
+.stTextArea textarea:focus, .stTextInput input:focus {
+    border-color: #4f46e5 !important;
+    box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15) !important;
+}
+
+/* Header Banner */
+.header-banner-light {
+    padding: 20px 0px 16px 0px;
+    border-bottom: 1px solid #e2e8f0;
+    margin-bottom: 24px;
+}
+
+.header-title-light {
+    font-size: 1.85rem;
+    font-weight: 800;
+    color: #0f172a;
+    margin: 0;
+    letter-spacing: -0.02em;
+}
+
+.header-sub-light {
+    color: #64748b;
+    font-size: 0.95rem;
+    margin-top: 4px;
+}
+
+/* Model Comparison Card */
+.model-card-light {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 14px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 4px 6px -1px rgba(0,0,0,0.03);
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.model-card-light:hover {
+    border-color: #4f46e5;
+    transform: translateY(-2px);
+}
+
+.model-name-light {
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #4f46e5;
+    margin-bottom: 6px;
+}
+
+/* Auth Page Light Layout */
+.auth-hero-light {
+    background: linear-gradient(135deg, #4f46e5 0%, #3b82f6 100%);
+    border-radius: 20px;
+    padding: 40px;
+    color: #ffffff;
+    height: 100%;
+    box-shadow: 0 10px 30px rgba(79, 70, 229, 0.25);
+}
+
+.auth-brand-light {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 8px;
+    letter-spacing: -0.03em;
+}
+
+.auth-tagline-light {
+    font-size: 1.1rem;
+    color: #e0e7ff;
+    line-height: 1.5;
+}

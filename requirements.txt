@@ -5,5 +5,6 @@ pandas
 numpy
 scikit-learn
 openpyxl
-datasets
-tqdm
+SpeechRecognition
+pydub
+reportlab
