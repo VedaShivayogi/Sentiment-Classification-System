@@ -183,7 +183,7 @@ Documentation/
 - **Multilingual Voice Support:** Native speech-to-text models for Regional Indian Languages (Kannada, Hindi, Tamil, Telugu).
 - **Whisper / Faster-Whisper Integration:** Offline local high-accuracy speech transcription.
 - **Aspect-Based Sentiment Analysis (ABSA):** Entity & feature sentiment extraction.
-```
+
 
 ---
 
@@ -210,5 +210,5 @@ Documentation/
 
 GitHub sometimes blocks Google Drive thumbnails. If that happens, **replace only the two lines** under `## 🎥 Demo Video` with:
 
-```markdown
+
 [![Watch the VEDA Demo](https://img.shields.io/badge/▶️_Watch_VEDA_Demo_on_Google_Drive-4F46E5?style=for-the-badge&logo=google-drive)](https://drive.google.com/file/d/1k68kVUptd0Cag9KbRFYs4tjNQCzfUyUC/view?usp=drive_link)
