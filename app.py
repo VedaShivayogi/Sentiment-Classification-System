@@ -5,7 +5,7 @@ app.py — Main Application Entry Point & Router for VEDA (Voice, Emotion & Data
 import os
 import streamlit as st
 
-# Set Streamlit page configuration as the very first command
+# Set Streamlit page configuration as the very first command veda
 st.set_page_config(
     page_title="VEDA — Voice, Emotion & Data Analytics",
     page_icon="🎙️",
